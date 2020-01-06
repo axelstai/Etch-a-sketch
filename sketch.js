@@ -2,24 +2,29 @@
 const container = document.querySelector("#container");
 const body = document.querySelector("body");
 body.style.backgroundColor = "pink";
+let number = prompt("what size canvas do you want?");
+let size = 700 / number + "px";
 
-//creates grid of divs with a nested loop
-for (i = 0; i < 16; i++) {
+//creates a canvas made of divs with a nested loop
+for (i = 0; i < number; i++) {
     let row = document.createElement("div");
-    row.setAttribute("style", "display: inline-block; width: 10px; height: 10px; background: white;");
+    row.setAttribute("style", "display: inline-block; width: 1px; height: 1px; background: white;");
     row.classList.add("div");
     container.appendChild(row)
-    for (j = 0; j < 16; j++) {
+    for (j = 0; j < number; j++) {
         let column = document.createElement("div");
-        column.setAttribute("style", "display: block; width: 10px; height: 10px; background: white;");
+        column.setAttribute("style", "display: block; width: 1px; height: 1px; background: white;");
         column.classList.add("div");
         row.appendChild(column);
     }
 }
 
-//makes the divs black when selected
+
+//rezises canvas and makes the divs black when selected
 const divs = document.querySelectorAll(".div");
 divs.forEach((div) => {
+    div.style.width = size;
+    div.style.height = size;
     div.addEventListener("mouseover", (e) => {
         e.target.style.background = "black";
     })
@@ -28,15 +33,17 @@ divs.forEach((div) => {
 //create reset-button
 const button = document.createElement("button");
 button.textContent = "Reset Canvas";
-container.appendChild(button);
+container.insertBefore(button, container.childNodes[0]);
 
 let btn = document.querySelector("button");
 btn.addEventListener("click", () => {
+    let sz = prompt("what size canvas do you want?")
+    number = sz;
+    console.log(number);
     let divs = document.querySelectorAll(".div");
     divs.forEach((div) => {
         div.style.backgroundColor = "white";
     })
+
 })
-
-
 
