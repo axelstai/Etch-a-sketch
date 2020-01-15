@@ -5,6 +5,8 @@ body.style.backgroundColor = "pink";
 let number = prompt("what size canvas do you want?");
 let size = 700 / number + "px";
 
+console.log("container");
+
 //creates a canvas made of divs with a nested loop
 for (i = 0; i < number; i++) {
     let row = document.createElement("div");
